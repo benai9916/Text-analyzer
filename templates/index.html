@@ -110,9 +110,11 @@
 		<div class="tab-content">
 		  	<div role="tabpanel" class="tab-pane fade in active show pl-4 border" id="1a">
 		  	    <h3 class="text-danger mt-3">Tokens</h3>
-		          {% for item in custom_tokens %}
-		          <li>{{item}}</li>
-		          {% endfor %}
+		          	{% for item in custom_tokens %}
+		          		{% if item|length > 1%}
+		          			<li>{{item}}</li>
+		          		{% endif %}
+		          	{% endfor %}
 		  	</div>
 
 		  	<div role="tabpanel" class="tab-pane fade border" id="2a">
@@ -221,16 +223,17 @@
 				<thead >
 				  <tr>
 				    <th scope="col">Token</th>
-				    <th scope="col">Meaning</th>
+				    <th scope="col" class="text-right">View Meaning</th>
 				   
 				  </tr>
 				</thead>
 				 {% for i in custom_tokens%}
 				<tbody>
 				  <tr>
+				  	{% if i|length > 1 %}
 				    <td>{{i}}</td>
-				    <td><a href="http://www.dictionary.com/browse/{{i}}?s="  target="_blank" type="button" class="btn btn-primary" style="float:right;font-size:9px;color:#fff;">View</a></td>
-				    
+				    <td><a href="http://www.dictionary.com/browse/{{i}}?s="  target="_blank" type="button" class="btn btn-primary" style="float:right;font-size:10px;color:#fff;">View</a></td>
+				    {% endif %}
 				  </tr>
 				</tbody>{% endfor %}
 				</table>
